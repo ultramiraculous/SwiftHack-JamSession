@@ -1,0 +1,420 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AFBA5B7519D746480084CB5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBA5B7419D746480084CB5B /* AppDelegate.swift */; };
+		AFBA5B7719D746480084CB5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBA5B7619D746480084CB5B /* ViewController.swift */; };
+		AFBA5B7A19D746480084CB5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFBA5B7819D746480084CB5B /* Main.storyboard */; };
+		AFBA5B7C19D746480084CB5B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFBA5B7B19D746480084CB5B /* Images.xcassets */; };
+		AFBA5B7F19D746480084CB5B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBA5B7D19D746480084CB5B /* LaunchScreen.xib */; };
+		AFBA5B8B19D746480084CB5B /* MultipeerJamSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBA5B8A19D746480084CB5B /* MultipeerJamSessionTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AFBA5B8519D746480084CB5B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AFBA5B6719D746480084CB5B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AFBA5B6E19D746480084CB5B;
+			remoteInfo = MultipeerJamSession;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AFBA5B6F19D746480084CB5B /* MultipeerJamSession.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultipeerJamSession.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFBA5B7319D746480084CB5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFBA5B7419D746480084CB5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AFBA5B7619D746480084CB5B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AFBA5B7919D746480084CB5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AFBA5B7B19D746480084CB5B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		AFBA5B7E19D746480084CB5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		AFBA5B8419D746480084CB5B /* MultipeerJamSessionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MultipeerJamSessionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFBA5B8919D746480084CB5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFBA5B8A19D746480084CB5B /* MultipeerJamSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerJamSessionTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AFBA5B6C19D746480084CB5B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFBA5B8119D746480084CB5B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AFBA5B6619D746480084CB5B = {
+			isa = PBXGroup;
+			children = (
+				AFBA5B7119D746480084CB5B /* MultipeerJamSession */,
+				AFBA5B8719D746480084CB5B /* MultipeerJamSessionTests */,
+				AFBA5B7019D746480084CB5B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AFBA5B7019D746480084CB5B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AFBA5B6F19D746480084CB5B /* MultipeerJamSession.app */,
+				AFBA5B8419D746480084CB5B /* MultipeerJamSessionTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AFBA5B7119D746480084CB5B /* MultipeerJamSession */ = {
+			isa = PBXGroup;
+			children = (
+				AFBA5B7419D746480084CB5B /* AppDelegate.swift */,
+				AFBA5B7619D746480084CB5B /* ViewController.swift */,
+				AFBA5B7819D746480084CB5B /* Main.storyboard */,
+				AFBA5B7B19D746480084CB5B /* Images.xcassets */,
+				AFBA5B7D19D746480084CB5B /* LaunchScreen.xib */,
+				AFBA5B7219D746480084CB5B /* Supporting Files */,
+			);
+			path = MultipeerJamSession;
+			sourceTree = "<group>";
+		};
+		AFBA5B7219D746480084CB5B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AFBA5B7319D746480084CB5B /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AFBA5B8719D746480084CB5B /* MultipeerJamSessionTests */ = {
+			isa = PBXGroup;
+			children = (
+				AFBA5B8A19D746480084CB5B /* MultipeerJamSessionTests.swift */,
+				AFBA5B8819D746480084CB5B /* Supporting Files */,
+			);
+			path = MultipeerJamSessionTests;
+			sourceTree = "<group>";
+		};
+		AFBA5B8819D746480084CB5B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AFBA5B8919D746480084CB5B /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AFBA5B6E19D746480084CB5B /* MultipeerJamSession */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFBA5B8E19D746480084CB5B /* Build configuration list for PBXNativeTarget "MultipeerJamSession" */;
+			buildPhases = (
+				AFBA5B6B19D746480084CB5B /* Sources */,
+				AFBA5B6C19D746480084CB5B /* Frameworks */,
+				AFBA5B6D19D746480084CB5B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MultipeerJamSession;
+			productName = MultipeerJamSession;
+			productReference = AFBA5B6F19D746480084CB5B /* MultipeerJamSession.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AFBA5B8319D746480084CB5B /* MultipeerJamSessionTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFBA5B9119D746480084CB5B /* Build configuration list for PBXNativeTarget "MultipeerJamSessionTests" */;
+			buildPhases = (
+				AFBA5B8019D746480084CB5B /* Sources */,
+				AFBA5B8119D746480084CB5B /* Frameworks */,
+				AFBA5B8219D746480084CB5B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AFBA5B8619D746480084CB5B /* PBXTargetDependency */,
+			);
+			name = MultipeerJamSessionTests;
+			productName = MultipeerJamSessionTests;
+			productReference = AFBA5B8419D746480084CB5B /* MultipeerJamSessionTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AFBA5B6719D746480084CB5B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = SwiftHack;
+				TargetAttributes = {
+					AFBA5B6E19D746480084CB5B = {
+						CreatedOnToolsVersion = 6.0.1;
+					};
+					AFBA5B8319D746480084CB5B = {
+						CreatedOnToolsVersion = 6.0.1;
+						TestTargetID = AFBA5B6E19D746480084CB5B;
+					};
+				};
+			};
+			buildConfigurationList = AFBA5B6A19D746480084CB5B /* Build configuration list for PBXProject "MultipeerJamSession" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AFBA5B6619D746480084CB5B;
+			productRefGroup = AFBA5B7019D746480084CB5B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AFBA5B6E19D746480084CB5B /* MultipeerJamSession */,
+				AFBA5B8319D746480084CB5B /* MultipeerJamSessionTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AFBA5B6D19D746480084CB5B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFBA5B7A19D746480084CB5B /* Main.storyboard in Resources */,
+				AFBA5B7F19D746480084CB5B /* LaunchScreen.xib in Resources */,
+				AFBA5B7C19D746480084CB5B /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFBA5B8219D746480084CB5B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AFBA5B6B19D746480084CB5B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFBA5B7719D746480084CB5B /* ViewController.swift in Sources */,
+				AFBA5B7519D746480084CB5B /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFBA5B8019D746480084CB5B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFBA5B8B19D746480084CB5B /* MultipeerJamSessionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AFBA5B8619D746480084CB5B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AFBA5B6E19D746480084CB5B /* MultipeerJamSession */;
+			targetProxy = AFBA5B8519D746480084CB5B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AFBA5B7819D746480084CB5B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AFBA5B7919D746480084CB5B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AFBA5B7D19D746480084CB5B /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AFBA5B7E19D746480084CB5B /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AFBA5B8C19D746480084CB5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AFBA5B8D19D746480084CB5B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AFBA5B8F19D746480084CB5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MultipeerJamSession/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AFBA5B9019D746480084CB5B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MultipeerJamSession/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		AFBA5B9219D746480084CB5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MultipeerJamSessionTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MultipeerJamSession.app/MultipeerJamSession";
+			};
+			name = Debug;
+		};
+		AFBA5B9319D746480084CB5B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MultipeerJamSessionTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MultipeerJamSession.app/MultipeerJamSession";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AFBA5B6A19D746480084CB5B /* Build configuration list for PBXProject "MultipeerJamSession" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFBA5B8C19D746480084CB5B /* Debug */,
+				AFBA5B8D19D746480084CB5B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFBA5B8E19D746480084CB5B /* Build configuration list for PBXNativeTarget "MultipeerJamSession" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFBA5B8F19D746480084CB5B /* Debug */,
+				AFBA5B9019D746480084CB5B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		AFBA5B9119D746480084CB5B /* Build configuration list for PBXNativeTarget "MultipeerJamSessionTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFBA5B9219D746480084CB5B /* Debug */,
+				AFBA5B9319D746480084CB5B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AFBA5B6719D746480084CB5B /* Project object */;
+}
