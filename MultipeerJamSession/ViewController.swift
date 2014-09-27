@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         
         let peerNames = peers.map { $0.displayName }
         
-        self.label?.text = "New Peer List: \(peerNames.description) \n \(self.label?.text)"
+        self.label?.text = "New Peer List: \(peerNames.description) \n\n \(self.label?.text)"
         
     }
     
@@ -40,11 +40,6 @@ class ViewController: UIViewController {
             recievedData: gotNewData)
         
         server = JamSessionServer(serverName: "My Server", localClient: client!)
-        
-        
-//        MCAdvertiserAssistant(serviceType: JamSessionServiceType,
-//            discoveryInfo: nil,
-//            session: self.server!.session).start();
         
     }
     

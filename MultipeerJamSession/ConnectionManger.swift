@@ -94,7 +94,7 @@ class JamSessionClient: NSObject, MCSessionDelegate {
     func session(session: MCSession!, peer peerID: MCPeerID!, didChangeState state: MCSessionState) {
         
         if (state == .Connected) {
-            session.sendData(NSData(), toPeers: [peerID], withMode: .Reliable, error: nil)
+            session.sendData("Test".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true), toPeers: [peerID], withMode: .Reliable, error: nil)
         }
         
         if (state == .Connected || state == .NotConnected) {
