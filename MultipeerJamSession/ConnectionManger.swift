@@ -9,27 +9,35 @@ import MultipeerConnectivity
 let JamSessionServiceType = "JamSession-srvc"
 
 //The peer name for our local device
-let JamSessionPeer = MCPeerID(displayName: UIDevice.currentDevice().name)
+let JamSessionPeer = MCPeerID(displayName: "\(CFAbsoluteTimeGetCurrent())")
 
 
 class JamSessionServer : NSObject,
-                         MCNearbyServiceAdvertiserDelegate,
-                         MCSessionDelegate
+                         MCNearbyServiceAdvertiserDelegate
 
 {
     let serverName: String
     let advertiser: MCNearbyServiceAdvertiser
-    let session: MCSession
+    let localClient: JamSessionClient
+    var session: MCSession {
+        get { return self.localClient.session }
+    }
     
-    init(serverName: String){
+    init(serverName: String, localClient: JamSessionClient){
+        
         self.serverName = serverName
         
         self.advertiser = MCNearbyServiceAdvertiser(peer: JamSessionPeer,
             discoveryInfo: nil,
             serviceType: JamSessionServiceType)
+                
+        self.localClient = localClient
         
-        self.session = MCSession(peer: JamSessionPeer)
         
+        super.init()
+        
+        self.advertiser.delegate = self
+        self.advertiser.startAdvertisingPeer()
     }
     
     func advertiser(advertiser: MCNearbyServiceAdvertiser!,
@@ -58,16 +66,54 @@ class JamSessionServer : NSObject,
             }))
         
         
+        invitationHandler(true, self.session)
+        
     }
+        
+}
+
+
+
+class JamSessionClient: NSObject, MCSessionDelegate {
+    let session: MCSession
+    let peerListChanged: ([MCPeerID]) -> (Void)
+    let recievedData: (NSData) -> (Void)
+    
+    init(session: MCSession, peerListChanged: ([MCPeerID]) -> (Void), recievedData: (NSData) -> (Void)){
+        self.session = session
+        self.peerListChanged = peerListChanged
+        self.recievedData = recievedData
+        
+        super.init()
+        
+        session.delegate = self
+    }
+    
     
     // Remote peer changed state
     func session(session: MCSession!, peer peerID: MCPeerID!, didChangeState state: MCSessionState) {
+        
+        if (state == .Connected) {
+            session.sendData(NSData(), toPeers: [peerID], withMode: .Reliable, error: nil)
+        }
+        
+        if (state == .Connected || state == .NotConnected) {
+            
+            dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+                self.peerListChanged(self.session.connectedPeers as [MCPeerID])
+            })
+            
+        }
+        
         
     }
     
     // Received data from remote peer
     func session(session: MCSession!, didReceiveData data: NSData!, fromPeer peerID: MCPeerID!) {
         
+        dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+            self.recievedData(data)
+        })
     }
     
     // Received a byte stream from remote peer
@@ -86,4 +132,6 @@ class JamSessionServer : NSObject,
     }
     
 }
+
+
 

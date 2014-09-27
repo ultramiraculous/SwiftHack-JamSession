@@ -7,17 +7,63 @@
 //
 
 import UIKit
+import MultipeerConnectivity
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    @IBOutlet var label: UITextView?
+    
+    var server: JamSessionServer?
+    var client: JamSessionClient?
+    var browserController: MCBrowserViewController?
+    
+    
+    func gotNewPeers(peers: [MCPeerID]) {
+        
+        let peerNames = peers.map { $0.displayName }
+        
+        self.label?.text = "New Peer List: \(peerNames.description) \n \(self.label?.text)"
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func gotNewData(data: NSData) {
+        
+       self.label?.text = "New Data: \(data.description)"
+        
+    }
+    
+    @IBAction func startServer(UIButton) {
+        
+        let session = MCSession(peer: JamSessionPeer)
+        client = JamSessionClient(session: session,
+            peerListChanged: gotNewPeers,
+            recievedData: gotNewData)
+        
+        server = JamSessionServer(serverName: "My Server", localClient: client!)
+        
+        
+//        MCAdvertiserAssistant(serviceType: JamSessionServiceType,
+//            discoveryInfo: nil,
+//            session: self.server!.session).start();
+        
+    }
+    
+    @IBAction func startClient(UIButton) {
+        
+        let browser = MCNearbyServiceBrowser(peer: JamSessionPeer, serviceType: JamSessionServiceType)
+        
+        let session = MCSession(peer: JamSessionPeer)
+        client = JamSessionClient(session: session,
+            peerListChanged: gotNewPeers,
+            recievedData: gotNewData)
+        
+        self.browserController = MCBrowserViewController(browser: browser, session: session)
+        
+        self.presentViewController(self.browserController!, animated: true, completion: {
+            
+            browser.startBrowsingForPeers()
+        })
+        
     }
 
 
