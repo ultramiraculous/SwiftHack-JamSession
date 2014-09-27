@@ -9,7 +9,8 @@ import MultipeerConnectivity
 let JamSessionServiceType = "JamSession-srvc"
 
 //The peer name for our local device
-let JamSessionPeer = MCPeerID(displayName: "\(CFAbsoluteTimeGetCurrent())")
+
+//let JamSessionPeer = MCPeerID(displayName: "\(UIDevice.currentDevice().name)")
 
 
 class JamSessionServer : NSObject,
@@ -23,11 +24,11 @@ class JamSessionServer : NSObject,
         get { return self.localClient.session }
     }
     
-    init(serverName: String, localClient: JamSessionClient){
+    init(localClient: JamSessionClient){
         
-        self.serverName = serverName
-        
-        self.advertiser = MCNearbyServiceAdvertiser(peer: JamSessionPeer,
+
+        self.serverName = localClient.session.myPeerID.displayName
+        self.advertiser = MCNearbyServiceAdvertiser(peer:localClient.session.myPeerID ,
             discoveryInfo: nil,
             serviceType: JamSessionServiceType)
                 

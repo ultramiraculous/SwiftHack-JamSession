@@ -9,14 +9,14 @@
 import UIKit
 import MultipeerConnectivity
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate, MCBrowserViewControllerDelegate {
 
     @IBOutlet var label: UITextView?
     
     var server: JamSessionServer?
     var client: JamSessionClient?
+    var clientName: String?
     var browserController: MCBrowserViewController?
-    
     
     func gotNewPeers(peers: [MCPeerID]) {
         
@@ -26,35 +26,59 @@ class ViewController: UIViewController {
         
     }
     
+    @IBOutlet weak var name: UITextField!
+
     func gotNewData(peer: MCPeerID, data:NSData) {
-        
        self.label?.text = "New Data: \(data.description)"
         
     }
     
+    func browserViewController(browserViewController: MCBrowserViewController!, shouldPresentNearbyPeer peerID: MCPeerID!, withDiscoveryInfo info: [NSObject : AnyObject]!) -> Bool {
+        return true
+    }
+    
+    func browserViewControllerDidFinish(browserViewController: MCBrowserViewController!) {
+        // code
+    }
+    
+    func browserViewControllerWasCancelled(browserViewController: MCBrowserViewController!) {
+        // code
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        clientName = textField.text
+    }
+    
     @IBAction func startServer(UIButton) {
         
-        let session = MCSession(peer: JamSessionPeer)
+        if clientName == nil {
+            clientName = UIDevice.currentDevice().name
+        }
+        
+        var peer = MCPeerID(displayName: "\(clientName) Server")
+        
+        let session = MCSession(peer: peer)
         client = JamSessionClient(session: session,
             peerListChanged: gotNewPeers,
             recievedData: gotNewData)
-        
-        
-        server = JamSessionServer(serverName: "My Server", localClient: client!)
+
+        server = JamSessionServer(localClient: client!)
         
     }
     
     @IBAction func startClient(UIButton) {
         
-        let browser = MCNearbyServiceBrowser(peer: JamSessionPeer, serviceType: JamSessionServiceType)
+        var peer = MCPeerID(displayName: "\(clientName) Client")
         
-        let session = MCSession(peer: JamSessionPeer)
+        let browser = MCNearbyServiceBrowser(peer: peer, serviceType: JamSessionServiceType)
+        
+        let session = MCSession(peer: peer)
         client = JamSessionClient(session: session,
             peerListChanged: gotNewPeers,
             recievedData: gotNewData)
         
         self.browserController = MCBrowserViewController(browser: browser, session: session)
-        
+        self.browserController?.delegate = self
         self.presentViewController(self.browserController!, animated: true, completion: {
             
             browser.startBrowsingForPeers()
