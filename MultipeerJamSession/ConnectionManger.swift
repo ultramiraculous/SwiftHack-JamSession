@@ -77,9 +77,9 @@ class JamSessionServer : NSObject,
 class JamSessionClient: NSObject, MCSessionDelegate {
     let session: MCSession
     let peerListChanged: ([MCPeerID]) -> (Void)
-    let recievedData: (NSData) -> (Void)
+    let recievedData: (MCPeerID, NSData) -> (Void)
     
-    init(session: MCSession, peerListChanged: ([MCPeerID]) -> (Void), recievedData: (NSData) -> (Void)){
+    init(session: MCSession, peerListChanged: ([MCPeerID]) -> (Void), recievedData: (peer: MCPeerID, sentData: NSData) -> (Void)){
         self.session = session
         self.peerListChanged = peerListChanged
         self.recievedData = recievedData
@@ -109,10 +109,9 @@ class JamSessionClient: NSObject, MCSessionDelegate {
     }
     
     // Received data from remote peer
-    func session(session: MCSession!, didReceiveData data: NSData!, fromPeer peerID: MCPeerID!) {
-        
+    func session(session: MCSession!, didReceiveData data: NSData!, fromPeer peerID: MCPeerID!) { 
         dispatch_sync(dispatch_get_main_queue(), { () -> Void in
-            self.recievedData(data)
+            self.recievedData(peerID, data)
         })
     }
     

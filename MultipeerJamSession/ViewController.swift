@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         
     }
     
-    func gotNewData(data: NSData) {
+    func gotNewData(peer: MCPeerID, data:NSData) {
         
        self.label?.text = "New Data: \(data.description)"
         
@@ -38,6 +38,7 @@ class ViewController: UIViewController {
         client = JamSessionClient(session: session,
             peerListChanged: gotNewPeers,
             recievedData: gotNewData)
+        
         
         server = JamSessionServer(serverName: "My Server", localClient: client!)
         
@@ -58,6 +59,7 @@ class ViewController: UIViewController {
             
             browser.startBrowsingForPeers()
         })
+        
         
     }
 
