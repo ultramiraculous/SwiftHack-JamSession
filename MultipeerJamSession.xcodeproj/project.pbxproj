@@ -13,6 +13,7 @@
 		AFBA5B7C19D746480084CB5B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFBA5B7B19D746480084CB5B /* Images.xcassets */; };
 		AFBA5B7F19D746480084CB5B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBA5B7D19D746480084CB5B /* LaunchScreen.xib */; };
 		AFBA5B8B19D746480084CB5B /* MultipeerJamSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBA5B8A19D746480084CB5B /* MultipeerJamSessionTests.swift */; };
+		AFCEA9AB19D74D7A00155769 /* ConnectionManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCEA9AA19D74D7A00155769 /* ConnectionManger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		AFBA5B8419D746480084CB5B /* MultipeerJamSessionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MultipeerJamSessionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFBA5B8919D746480084CB5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFBA5B8A19D746480084CB5B /* MultipeerJamSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerJamSessionTests.swift; sourceTree = "<group>"; };
+		AFCEA9AA19D74D7A00155769 /* ConnectionManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,11 +80,12 @@
 			isa = PBXGroup;
 			children = (
 				AFBA5B7419D746480084CB5B /* AppDelegate.swift */,
-				AFBA5B7619D746480084CB5B /* ViewController.swift */,
-				AFBA5B7819D746480084CB5B /* Main.storyboard */,
+				AFCEA9AA19D74D7A00155769 /* ConnectionManger.swift */,
 				AFBA5B7B19D746480084CB5B /* Images.xcassets */,
 				AFBA5B7D19D746480084CB5B /* LaunchScreen.xib */,
+				AFBA5B7819D746480084CB5B /* Main.storyboard */,
 				AFBA5B7219D746480084CB5B /* Supporting Files */,
+				AFBA5B7619D746480084CB5B /* ViewController.swift */,
 			);
 			path = MultipeerJamSession;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFCEA9AB19D74D7A00155769 /* ConnectionManger.swift in Sources */,
 				AFBA5B7719D746480084CB5B /* ViewController.swift in Sources */,
 				AFBA5B7519D746480084CB5B /* AppDelegate.swift in Sources */,
 			);
@@ -405,6 +409,7 @@
 				AFBA5B9019D746480084CB5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AFBA5B9119D746480084CB5B /* Build configuration list for PBXNativeTarget "MultipeerJamSessionTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +418,7 @@
 				AFBA5B9319D746480084CB5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
