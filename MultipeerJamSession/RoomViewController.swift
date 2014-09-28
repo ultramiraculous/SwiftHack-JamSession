@@ -35,9 +35,15 @@ class RoomViewController: UIViewController, JamSessionClientDelegate {
     }
     
     func recievedMessage(peer: MCPeerID, message: String) {
-        let idx         = advance(message.startIndex, 2)
-        let startOrStop = (message.substringToIndex(idx))
-        let tone        = (message.substringFromIndex(idx).toInt())
+        let idx1        = advance(message.startIndex, 1)
+        let idx2        = advance(message.startIndex, 2)
+        let startOrStop = (message.substringToIndex(idx1))
+        let stone       = (message.substringFromIndex(idx2))
+        let tone        = stone.toInt()
+        println(message)
+        println(startOrStop)
+        println(stone)
+        println(tone)
         switch startOrStop {
         case "1" : soundGenerator?.playNoteOn(UInt32(tone!), velocity: UInt32(100))
         case "0" : soundGenerator?.playNoteOff(UInt32(tone!))
