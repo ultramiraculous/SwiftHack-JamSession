@@ -97,7 +97,7 @@ class JamSessionClient: NSObject, MCSessionDelegate {
     }
     
     func sendNoteOff(note:Int) {
-        sendMessage("0\(note)")
+        sendMessage("0:\(note)")
     }
     
 }
