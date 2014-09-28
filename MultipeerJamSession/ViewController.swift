@@ -38,7 +38,7 @@ class ViewController: UITableViewController, MCBrowserViewControllerDelegate {
 
     @IBAction func startServer(UIButton) {
         
-        var peer = MCPeerID(displayName: "\(clientName) Server")
+        var peer = MCPeerID(displayName: "\(clientName)")
         let session = MCSession(peer: peer)
         
         self.performSegueWithIdentifier("ToRoom", sender: JamSessionServer(session: session))
@@ -47,7 +47,7 @@ class ViewController: UITableViewController, MCBrowserViewControllerDelegate {
     
     @IBAction func startClient(UIButton) {
         
-        var peer = MCPeerID(displayName: "\(clientName) Client")
+        var peer = MCPeerID(displayName: "\(clientName)")
         
         let browser = MCNearbyServiceBrowser(peer: peer, serviceType: JamSessionServiceType)
         
