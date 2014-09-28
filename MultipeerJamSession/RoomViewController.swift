@@ -23,7 +23,7 @@ class RoomViewController: UIViewController, JamSessionClientDelegate {
     }
     
     func recievedMessage(session: MCSession, message: JamSessionMessage) {
-        
+        println(message)
     }
     
     func recivedInvitationRequest(session: MCSession, peer: MCPeerID, accept: (Void)->(Void), reject: (Void)->(Void)) {
@@ -47,6 +47,15 @@ class RoomViewController: UIViewController, JamSessionClientDelegate {
         
         self.presentViewController(alert, animated: true, completion: nil)
     }
+    
+    @IBAction func playNoteOn(b:UIButton) {
+        roomClient.sendMessage(JamSessionMessage.Start)
+    }
+    
+    @IBAction func playNoteOff(b:UIButton) {
+        roomClient.sendMessage(JamSessionMessage.Stop)
+    }
+
 }
 
 class PeerListController: UITableViewController {
