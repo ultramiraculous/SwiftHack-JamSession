@@ -15,7 +15,7 @@ protocol JamSessionClientDelegate {
     
     func peerListChanged(peers: [MCPeerID])
     
-    func recievedMessage(peer: MCPeerID, message: JamSessionMessage)
+    func recievedMessage(peer: MCPeerID, message: String)
     
     func recivedInvitationRequest(session: MCSession, peer: MCPeerID, accept: (Void)->(Void), reject: (Void)->(Void))
     
@@ -23,7 +23,7 @@ protocol JamSessionClientDelegate {
 
 enum JamSessionMessage: String {
     case Start = "START"
-    case Stop = "STOP"
+    case Stop  = "STOP"
 }
 
 class JamSessionClient: NSObject, MCSessionDelegate {
@@ -62,11 +62,8 @@ class JamSessionClient: NSObject, MCSessionDelegate {
         if let delegate = self.delegate {
             dispatch_async(dispatch_get_main_queue(), {
                 
-                if let message = JamSessionMessage.fromRaw( NSString(data: data, encoding: JamSessionStringEncoding) ) {
-                    delegate.recievedMessage(peerID, message:message)
-                } else {
-                    println("Invalid message \(data)")
-                }
+                let message = NSString(data: data, encoding: JamSessionStringEncoding)
+                delegate.recievedMessage(peerID, message:message)
                 
             })
         }
@@ -87,13 +84,21 @@ class JamSessionClient: NSObject, MCSessionDelegate {
         
     }
     
-    func sendMessage(message: JamSessionMessage) {
-        self.session.sendData(message.toRaw().dataUsingEncoding(JamSessionStringEncoding, allowLossyConversion: true),
+    func sendMessage(message: String) {
+        self.session.sendData(message.dataUsingEncoding(JamSessionStringEncoding, allowLossyConversion: true),
                             toPeers: self.session.connectedPeers,
                             withMode: .Reliable, error: nil)
         
         self.delegate?.recievedMessage(self.peerID, message:message)
         
+    }
+    
+    func sendNoteOn(note:Int) {
+        sendMessage("1:\(note)")
+    }
+    
+    func sendNoteOff(note:Int) {
+        sendMessage("0\(note)")
     }
     
 }

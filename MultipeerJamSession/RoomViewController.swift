@@ -33,12 +33,14 @@ class RoomViewController: UIViewController, JamSessionClientDelegate {
         self.peerList?.peerList = peers
     }
     
-    func recievedMessage(peer: MCPeerID, message: JamSessionMessage) {
-        switch message {
-        case JamSessionMessage.Start:
-            soundGenerator?.playNoteOn(UInt32(72), velocity: UInt32(100))
-        case JamSessionMessage.Stop:
-            soundGenerator?.playNoteOff(UInt32(72))
+    func recievedMessage(peer: MCPeerID, message: String) {
+        let idx         = advance(message.startIndex, 2)
+        let startOrStop = (message.substringToIndex(idx))
+        let tone        = (message.substringFromIndex(idx).toInt())
+        switch startOrStop {
+        case "1" : soundGenerator?.playNoteOn(UInt32(tone!), velocity: UInt32(100))
+        case "0" : soundGenerator?.playNoteOff(UInt32(tone!))
+        default  : println("message error")
         }
     }
     
@@ -65,11 +67,11 @@ class RoomViewController: UIViewController, JamSessionClientDelegate {
     }
     
     @IBAction func playNoteOn(b:UIButton) {
-        roomClient.sendMessage(JamSessionMessage.Start)
+        roomClient.sendNoteOn(b.tag)
     }
     
     @IBAction func playNoteOff(b:UIButton) {
-        roomClient.sendMessage(JamSessionMessage.Stop)
+        roomClient.sendNoteOff(b.tag)
     }
 
 }
