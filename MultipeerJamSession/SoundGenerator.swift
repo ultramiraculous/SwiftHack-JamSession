@@ -99,7 +99,7 @@ class SoundGenerator : NSObject {
         var status : OSStatus = OSStatus(noErr)
         status = MusicDeviceMIDIEvent(self.samplerUnit, noteCommand, noteNum, velocity, 0)
 //        CheckError(status)
-        println("noteon status is \(status)")
+        println("noteon status is \(status)")x
     }
     
     func playNoteOff(noteNum:UInt32)    {

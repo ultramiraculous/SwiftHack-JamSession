@@ -106,7 +106,7 @@
                         <viewControllerLayoutGuide type="top" id="6tF-Ps-QW2"/>
                         <viewControllerLayoutGuide type="bottom" id="sg3-8u-w0I"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="SQK-wC-ARz">
+                    <view key="view" tag="75" contentMode="scaleToFill" id="SQK-wC-ARz">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -122,14 +122,70 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kuk-d0-wTE">
-                                <rect key="frame" x="237" y="101" width="86" height="84"/>
-                                <state key="normal" title="Instument">
+                            <button opaque="NO" tag="75" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mfT-bp-yCq">
+                                <rect key="frame" x="245" y="163" width="46" height="30"/>
+                                <state key="normal" title="E flat">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="playNoteOff:" destination="lVh-dF-mQt" eventType="touchUpInside" id="lsL-5R-EaN"/>
-                                    <action selector="playNoteOn:" destination="lVh-dF-mQt" eventType="touchDown" id="NE3-nN-gnL"/>
+                                    <action selector="playNoteOff:" destination="lVh-dF-mQt" eventType="touchUpInside" id="agB-Yv-Ffg"/>
+                                    <action selector="playNoteOff:" destination="lVh-dF-mQt" eventType="touchUpOutside" id="eCj-5Q-oTk"/>
+                                    <action selector="playNoteOn:" destination="lVh-dF-mQt" eventType="touchDown" id="JAS-8K-PzT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="77" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NO8-UD-CrE">
+                                <rect key="frame" x="245" y="201" width="46" height="30"/>
+                                <state key="normal" title="F">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playNoteOff:" destination="lVh-dF-mQt" eventType="touchUpInside" id="4cQ-z7-mmN"/>
+                                    <action selector="playNoteOff:" destination="lVh-dF-mQt" eventType="touchUpOutside" id="DIa-jg-ngy"/>
+                                    <action selector="playNoteOn:" destination="lVh-dF-mQt" eventType="touchDown" id="vAa-KM-wVV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="79" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U90-Ff-Jts">
+                                <rect key="frame" x="245" y="244" width="46" height="30"/>
+                                <state key="normal" title="G">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playNoteOff:" destination="lVh-dF-mQt" eventType="touchUpOutside" id="b5h-Yo-RbY"/>
+                                    <action selector="playNoteOff:" destination="lVh-dF-mQt" eventType="touchUpInside" id="zFx-Vw-vCJ"/>
+                                    <action selector="playNoteOn:" destination="lVh-dF-mQt" eventType="touchDown" id="1gM-GK-QB7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="82" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5k-bZ-MGC">
+                                <rect key="frame" x="245" y="285" width="46" height="30"/>
+                                <state key="normal" title="B flat">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playNoteOff:" destination="lVh-dF-mQt" eventType="touchUpOutside" id="7xL-77-b9w"/>
+                                    <action selector="playNoteOff:" destination="lVh-dF-mQt" eventType="touchUpInside" id="k1N-0v-Tjk"/>
+                                    <action selector="playNoteOn:" destination="lVh-dF-mQt" eventType="touchDown" id="BBE-dg-GCZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="72" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Mu-S9-w2h">
+                                <rect key="frame" x="245" y="116" width="46" height="30"/>
+                                <state key="normal" title="C">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playNoteOff:" destination="lVh-dF-mQt" eventType="touchUpInside" id="DmW-6Y-K7b"/>
+                                    <action selector="playNoteOff:" destination="lVh-dF-mQt" eventType="touchUpOutside" id="u3E-TU-Yvm"/>
+                                    <action selector="playNoteOn:" destination="lVh-dF-mQt" eventType="touchDown" id="RYf-Ww-eEa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="84" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NNJ-hm-Awv">
+                                <rect key="frame" x="245" y="323" width="46" height="30"/>
+                                <state key="normal" title="C">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playNoteOff:" destination="lVh-dF-mQt" eventType="touchUpInside" id="Kpv-2k-Tzd"/>
+                                    <action selector="playNoteOff:" destination="lVh-dF-mQt" eventType="touchUpOutside" id="wf6-1S-qId"/>
+                                    <action selector="playNoteOn:" destination="lVh-dF-mQt" eventType="touchDown" id="T0a-q9-n4H"/>
                                 </connections>
                             </button>
                         </subviews>
