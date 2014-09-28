@@ -19,6 +19,8 @@ class RoomViewController: UIViewController, JamSessionClientDelegate {
         }
     }
     
+    var soundGenerator:SoundGenerator?
+    
     override func addChildViewController(childController: UIViewController) {
         super.addChildViewController(childController)
         
@@ -32,7 +34,12 @@ class RoomViewController: UIViewController, JamSessionClientDelegate {
     }
     
     func recievedMessage(peer: MCPeerID, message: JamSessionMessage) {
-        println(message)
+        switch message {
+        case JamSessionMessage.Start:
+            soundGenerator?.playNoteOn(UInt32(72), velocity: UInt32(100))
+        case JamSessionMessage.Stop:
+            soundGenerator?.playNoteOff(UInt32(72))
+        }
     }
     
     func recivedInvitationRequest(session: MCSession, peer: MCPeerID, accept: (Void)->(Void), reject: (Void)->(Void)) {

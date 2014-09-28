@@ -77,7 +77,7 @@ class ViewController: UITableViewController, MCBrowserViewControllerDelegate {
         if let roomController = segue.destinationViewController as? RoomViewController {
             
             roomController.roomClient = sender as JamSessionClient
-            
+            roomController.soundGenerator = SoundGenerator()
         }
     }
 
