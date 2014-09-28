@@ -21,23 +21,24 @@ protocol JamSessionClientDelegate {
     
 }
 
-enum JamSessionMessage: String {
-    case Start = "START"
-    case Stop  = "STOP"
-}
-
 class JamSessionClient: NSObject, MCSessionDelegate {
     var delegate: JamSessionClientDelegate?
     let session: MCSession
+    var outputStreams: [NSOutputStream] = []
     var peerID: MCPeerID {
         get { return self.session.myPeerID }
+    }
+    var peerList: [MCPeerID] {
+        var currentPeers = self.session.connectedPeers as [MCPeerID]
+        currentPeers.insert(self.peerID, atIndex: 0)
+        return currentPeers
     }
     
     init(session: MCSession){
         self.session = session
         
         super.init()
-        
+                
         session.delegate = self
     }
     
@@ -47,9 +48,7 @@ class JamSessionClient: NSObject, MCSessionDelegate {
         if (state == .Connected || state == .NotConnected) {
             if let delegate = self.delegate {
                 dispatch_async(dispatch_get_main_queue(), {
-                    var currentPeers = self.session.connectedPeers as [MCPeerID]
-                    currentPeers.insert(self.peerID, atIndex: 0)
-                    delegate.peerListChanged(currentPeers)
+                    delegate.peerListChanged(self.peerList)
                 })
             }
         }
@@ -60,7 +59,7 @@ class JamSessionClient: NSObject, MCSessionDelegate {
     // Received data from remote peer
     func session(session: MCSession!, didReceiveData data: NSData!, fromPeer peerID: MCPeerID!) {
         if let delegate = self.delegate {
-            dispatch_async(dispatch_get_main_queue(), {
+            dispatch_sync(dispatch_get_main_queue(), {
                 
                 let message = NSString(data: data, encoding: JamSessionStringEncoding)
                 delegate.recievedMessage(peerID, message:message)
