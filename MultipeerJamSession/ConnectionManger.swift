@@ -47,7 +47,9 @@ class JamSessionClient: NSObject, MCSessionDelegate {
         if (state == .Connected || state == .NotConnected) {
             if let delegate = self.delegate {
                 dispatch_async(dispatch_get_main_queue(), {
-                    delegate.peerListChanged(self.session.connectedPeers as [MCPeerID])
+                    var currentPeers = self.session.connectedPeers as [MCPeerID]
+                    currentPeers.insert(self.peerID, atIndex: 0)
+                    delegate.peerListChanged(currentPeers)
                 })
             }
         }
@@ -89,6 +91,9 @@ class JamSessionClient: NSObject, MCSessionDelegate {
         self.session.sendData(message.toRaw().dataUsingEncoding(JamSessionStringEncoding, allowLossyConversion: true),
                             toPeers: self.session.connectedPeers,
                             withMode: .Reliable, error: nil)
+        
+        self.delegate?.recievedMessage(self.peerID, message:message)
+        
     }
     
 }
