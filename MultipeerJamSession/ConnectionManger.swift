@@ -29,7 +29,7 @@ enum JamSessionMessage: String {
 class JamSessionClient: NSObject, MCSessionDelegate {
     var delegate: JamSessionClientDelegate?
     let session: MCSession
-    var outputStream: NSOutputStream!
+    var outputStreams: [NSOutputStream] = []
     var peerID: MCPeerID {
         get { return self.session.myPeerID }
     }
@@ -53,9 +53,7 @@ class JamSessionClient: NSObject, MCSessionDelegate {
         if (state == .Connected || state == .NotConnected) {
             if let delegate = self.delegate {
                 dispatch_async(dispatch_get_main_queue(), {
-                    var currentPeers = self.session.connectedPeers as [MCPeerID]
-                    currentPeers.insert(self.peerID, atIndex: 0)
-                    delegate.peerListChanged(currentPeers)
+                    delegate.peerListChanged(self.peerList)
                 })
             }
         }
