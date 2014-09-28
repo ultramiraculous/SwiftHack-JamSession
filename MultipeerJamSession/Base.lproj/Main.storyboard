@@ -127,6 +127,10 @@
                                 <state key="normal" title="Instument">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="playNoteOff:" destination="lVh-dF-mQt" eventType="touchUpInside" id="lsL-5R-EaN"/>
+                                    <action selector="playNoteOn:" destination="lVh-dF-mQt" eventType="touchDown" id="NE3-nN-gnL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -139,7 +143,7 @@
         <!--Peer List Controller-->
         <scene sceneID="apl-rd-qZ4">
             <objects>
-                <tableViewController id="p9p-FE-I6d" customClass="PeerListController" sceneMemberID="viewController">
+                <tableViewController id="p9p-FE-I6d" customClass="PeerListController" customModule="MultipeerJamSession" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="sZn-iI-LGi">
                         <rect key="frame" x="0.0" y="0.0" width="199" height="485"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

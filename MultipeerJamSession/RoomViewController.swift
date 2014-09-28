@@ -22,8 +22,8 @@ class RoomViewController: UIViewController, JamSessionClientDelegate {
     override func addChildViewController(childController: UIViewController) {
         super.addChildViewController(childController)
         
-        if let peerListController = {
-        
+        if let peerListController = childController as? PeerListController {
+            self.peerList = peerListController
         }
     }
     
@@ -32,7 +32,7 @@ class RoomViewController: UIViewController, JamSessionClientDelegate {
     }
     
     func recievedMessage(peer: MCPeerID, message: JamSessionMessage) {
-        
+        println(message)
     }
     
     func recivedInvitationRequest(session: MCSession, peer: MCPeerID, accept: (Void)->(Void), reject: (Void)->(Void)) {
@@ -56,6 +56,15 @@ class RoomViewController: UIViewController, JamSessionClientDelegate {
         
         self.presentViewController(alert, animated: true, completion: nil)
     }
+    
+    @IBAction func playNoteOn(b:UIButton) {
+        roomClient.sendMessage(JamSessionMessage.Start)
+    }
+    
+    @IBAction func playNoteOff(b:UIButton) {
+        roomClient.sendMessage(JamSessionMessage.Stop)
+    }
+
 }
 
 
@@ -78,6 +87,7 @@ class PeerListController: UITableViewController {
         let peerCell = tableView.dequeueReusableCellWithIdentifier("PeerCell") as UITableViewCell
         
         peerCell.textLabel?.text = peerList[indexPath.row].displayName
+        peerCell.detailTextLabel?.text = ""
         
         return peerCell
     }
