@@ -9,60 +9,39 @@
 import UIKit
 import MultipeerConnectivity
 
-class ViewController: UIViewController, UITextFieldDelegate, MCBrowserViewControllerDelegate {
-
-    @IBOutlet var label: UITextView?
+class ViewController: UITableViewController, MCBrowserViewControllerDelegate {
     
-    var server: JamSessionServer?
-    var client: JamSessionClient?
-    var clientName: String?
+    @IBOutlet weak var name: UITextField!
+    
+    var clientName: String {
+        get {
+            return self.name?.text ?? UIDevice.currentDevice().name
+        }
+    }
     var browserController: MCBrowserViewController?
     
     func gotNewPeers(peers: [MCPeerID]) {
         
         let peerNames = peers.map { $0.displayName }
         
-        self.label?.text = "New Peer List: \(peerNames.description) \n\n \(self.label?.text)"
-        
     }
-    
-    @IBOutlet weak var name: UITextField!
 
+    
     func gotNewData(peer: MCPeerID, data:NSData) {
-       self.label?.text = "New Data: \(data.description)"
-        
+       self.name?.text = "New Data: \(data.description)"
     }
     
     func browserViewController(browserViewController: MCBrowserViewController!, shouldPresentNearbyPeer peerID: MCPeerID!, withDiscoveryInfo info: [NSObject : AnyObject]!) -> Bool {
         return true
     }
     
-    func browserViewControllerDidFinish(browserViewController: MCBrowserViewController!) {
-        // code
-    }
-    
-    func browserViewControllerWasCancelled(browserViewController: MCBrowserViewController!) {
-        // code
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        clientName = textField.text
-    }
-    
+
     @IBAction func startServer(UIButton) {
         
-        if clientName == nil {
-            clientName = UIDevice.currentDevice().name
-        }
-        
         var peer = MCPeerID(displayName: "\(clientName) Server")
-        
         let session = MCSession(peer: peer)
-        client = JamSessionClient(session: session,
-            peerListChanged: gotNewPeers,
-            recievedData: gotNewData)
-
-        server = JamSessionServer(localClient: client!)
+        
+        self.performSegueWithIdentifier("ToRoom", sender: JamSessionServer(session: session))
         
     }
     
@@ -73,9 +52,6 @@ class ViewController: UIViewController, UITextFieldDelegate, MCBrowserViewContro
         let browser = MCNearbyServiceBrowser(peer: peer, serviceType: JamSessionServiceType)
         
         let session = MCSession(peer: peer)
-        client = JamSessionClient(session: session,
-            peerListChanged: gotNewPeers,
-            recievedData: gotNewData)
         
         self.browserController = MCBrowserViewController(browser: browser, session: session)
         self.browserController?.delegate = self
@@ -83,10 +59,27 @@ class ViewController: UIViewController, UITextFieldDelegate, MCBrowserViewContro
             
             browser.startBrowsingForPeers()
         })
-        
-        
     }
+    
+    func browserViewControllerDidFinish(browserViewController: MCBrowserViewController!) {
+        self.dismissViewControllerAnimated(false, completion: { () -> Void in
+            self.performSegueWithIdentifier("ToRoom", sender: JamSessionClient(session: browserViewController.session))
+        })
+    }
+    
+    func browserViewControllerWasCancelled(browserViewController: MCBrowserViewController!) {
+        self.dismissViewControllerAnimated(true, completion: nil);
+    }
+    
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if let roomController = segue.destinationViewController as? RoomViewController {
+            
+            roomController.roomClient = sender as JamSessionClient
+            
+        }
+    }
 
 }
 
