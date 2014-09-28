@@ -66,7 +66,7 @@ class JamSessionClient: NSObject, MCSessionDelegate {
     // Received data from remote peer
     func session(session: MCSession!, didReceiveData data: NSData!, fromPeer peerID: MCPeerID!) {
         if let delegate = self.delegate {
-            dispatch_async(dispatch_get_main_queue(), {
+            dispatch_sync(dispatch_get_main_queue(), {
                 
                 if let message = JamSessionMessage.fromRaw( NSString(data: data, encoding: JamSessionStringEncoding) ) {
                     delegate.recievedMessage(peerID, message:message)
