@@ -45,8 +45,8 @@ class RoomViewController: UIViewController, JamSessionClientDelegate {
         println(stone)
         println(tone)
         switch startOrStop {
-        case "1" : soundGenerator?.playNoteOn(UInt32(tone!), velocity: UInt32(100))
-        case "0" : soundGenerator?.playNoteOff(UInt32(tone!))
+        case "1" : soundGenerator?.playNoteOn(UInt32(tone!), velocity: UInt32(100)); self.peerList?.setPeerState(peer, playing: true)
+        case "0" : soundGenerator?.playNoteOff(UInt32(tone!)); self.peerList?.setPeerState(peer, playing: true)
         default  : println("message error")
         }
     }
