@@ -13,9 +13,9 @@ let JamSessionStringEncoding = NSASCIIStringEncoding
 
 protocol JamSessionClientDelegate {
     
-    func peerListChanged(session: MCSession, peers: [MCPeerID])
+    func peerListChanged(peers: [MCPeerID])
     
-    func recievedMessage(session: MCSession, message: JamSessionMessage)
+    func recievedMessage(peer: MCPeerID, message: JamSessionMessage)
     
     func recivedInvitationRequest(session: MCSession, peer: MCPeerID, accept: (Void)->(Void), reject: (Void)->(Void))
     
@@ -47,7 +47,7 @@ class JamSessionClient: NSObject, MCSessionDelegate {
         if (state == .Connected || state == .NotConnected) {
             if let delegate = self.delegate {
                 dispatch_async(dispatch_get_main_queue(), {
-                    delegate.peerListChanged(self.session, peers: self.session.connectedPeers as [MCPeerID])
+                    delegate.peerListChanged(self.session.connectedPeers as [MCPeerID])
                 })
             }
         }
@@ -61,7 +61,7 @@ class JamSessionClient: NSObject, MCSessionDelegate {
             dispatch_async(dispatch_get_main_queue(), {
                 
                 if let message = JamSessionMessage.fromRaw( NSString(data: data, encoding: JamSessionStringEncoding) ) {
-                    delegate.recievedMessage(self.session, message:message)
+                    delegate.recievedMessage(peerID, message:message)
                 } else {
                     println("Invalid message \(data)")
                 }

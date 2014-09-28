@@ -10,19 +10,28 @@ import UIKit
 import MultipeerConnectivity
 
 class RoomViewController: UIViewController, JamSessionClientDelegate {
-    @IBOutlet var roomName: UILabel?
-    @IBOutlet var peerList: UITableView?
+    @IBOutlet var roomName: UILabel!
+    @IBOutlet var peerList: PeerListController!
     
     var roomClient: JamSessionClient! {
-        didSet { self.roomClient.delegate = self }
+        didSet {
+            self.roomClient.delegate = self
+        }
     }
     
-    
-    func peerListChanged(session: MCSession, peers: [MCPeerID]) {
+    override func addChildViewController(childController: UIViewController) {
+        super.addChildViewController(childController)
         
+        if let peerListController = {
+        
+        }
     }
     
-    func recievedMessage(session: MCSession, message: JamSessionMessage) {
+    func peerListChanged(peers: [MCPeerID]) {
+        self.peerList?.peerList = peers
+    }
+    
+    func recievedMessage(peer: MCPeerID, message: JamSessionMessage) {
         
     }
     
@@ -49,8 +58,28 @@ class RoomViewController: UIViewController, JamSessionClientDelegate {
     }
 }
 
+
 class PeerListController: UITableViewController {
 
+    var peerList: [MCPeerID] = [] {
+        didSet { self.tableView.reloadData() }
+    }
     
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return peerList.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let peerCell = tableView.dequeueReusableCellWithIdentifier("PeerCell") as UITableViewCell
+        
+        peerCell.textLabel?.text = peerList[indexPath.row].displayName
+        
+        return peerCell
+    }
     
 }
