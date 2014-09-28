@@ -8,16 +8,14 @@ import MultipeerConnectivity
 //The name of the app's "service"
 let JamSessionServiceType = "JamSession-srvc"
 
-//The peer name for our local device
-
-//let JamSessionPeer = MCPeerID(displayName: "\(UIDevice.currentDevice().name)")
+let JamSessionStringEncoding = NSASCIIStringEncoding
 
 
 protocol JamSessionClientDelegate {
     
     func peerListChanged(session: MCSession, peers: [MCPeerID])
     
-    func recievedData(session: MCSession, data: NSData)
+    func recievedMessage(session: MCSession, message: JamSessionMessage)
     
     func recivedInvitationRequest(session: MCSession, peer: MCPeerID, accept: (Void)->(Void), reject: (Void)->(Void))
     
@@ -46,10 +44,6 @@ class JamSessionClient: NSObject, MCSessionDelegate {
     // Remote peer changed state
     func session(session: MCSession!, peer peerID: MCPeerID!, didChangeState state: MCSessionState) {
         
-        if (state == .Connected) {
-            session.sendData("Test".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true), toPeers: [peerID], withMode: .Reliable, error: nil)
-        }
-        
         if (state == .Connected || state == .NotConnected) {
             if let delegate = self.delegate {
                 dispatch_async(dispatch_get_main_queue(), {
@@ -65,7 +59,13 @@ class JamSessionClient: NSObject, MCSessionDelegate {
     func session(session: MCSession!, didReceiveData data: NSData!, fromPeer peerID: MCPeerID!) {
         if let delegate = self.delegate {
             dispatch_async(dispatch_get_main_queue(), {
-                delegate.recievedData(self.session, data: data)
+                
+                if let message = JamSessionMessage.fromRaw( NSString(data: data, encoding: JamSessionStringEncoding) ) {
+                    delegate.recievedMessage(self.session, message:message)
+                } else {
+                    println("Invalid message \(data)")
+                }
+                
             })
         }
     }
@@ -86,7 +86,7 @@ class JamSessionClient: NSObject, MCSessionDelegate {
     }
     
     func sendMessage(message: JamSessionMessage) {
-        self.session.sendData(message.toRaw().dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: true),
+        self.session.sendData(message.toRaw().dataUsingEncoding(JamSessionStringEncoding, allowLossyConversion: true),
                             toPeers: self.session.connectedPeers,
                             withMode: .Reliable, error: nil)
     }

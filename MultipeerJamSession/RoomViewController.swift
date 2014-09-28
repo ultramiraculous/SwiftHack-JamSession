@@ -22,7 +22,7 @@ class RoomViewController: UIViewController, JamSessionClientDelegate {
         
     }
     
-    func recievedData(session: MCSession, data: NSData) {
+    func recievedMessage(session: MCSession, message: JamSessionMessage) {
         
     }
     
