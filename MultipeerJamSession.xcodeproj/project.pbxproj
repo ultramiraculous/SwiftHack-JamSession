@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A175223919D7965B009FB912 /* SoundGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A175223819D7965B009FB912 /* SoundGenerator.swift */; };
 		AFBA5B7519D746480084CB5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBA5B7419D746480084CB5B /* AppDelegate.swift */; };
 		AFBA5B7719D746480084CB5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBA5B7619D746480084CB5B /* ViewController.swift */; };
 		AFBA5B7A19D746480084CB5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFBA5B7819D746480084CB5B /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A175223819D7965B009FB912 /* SoundGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundGenerator.swift; sourceTree = "<group>"; };
 		AFBA5B6F19D746480084CB5B /* MultipeerJamSession.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultipeerJamSession.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFBA5B7319D746480084CB5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFBA5B7419D746480084CB5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				AFBA5B7B19D746480084CB5B /* Images.xcassets */,
 				AFBA5B7D19D746480084CB5B /* LaunchScreen.xib */,
 				AFBA5B7819D746480084CB5B /* Main.storyboard */,
+				A175223819D7965B009FB912 /* SoundGenerator.swift */,
 				AFBA5B7619D746480084CB5B /* ViewController.swift */,
 				AFBB430C19D7736F002DA662 /* RoomViewController.swift */,
 				AFBA5B7219D746480084CB5B /* Supporting Files */,
@@ -222,6 +225,7 @@
 				AFCEA9AB19D74D7A00155769 /* ConnectionManger.swift in Sources */,
 				AFBA5B7719D746480084CB5B /* ViewController.swift in Sources */,
 				AFBA5B7519D746480084CB5B /* AppDelegate.swift in Sources */,
+				A175223919D7965B009FB912 /* SoundGenerator.swift in Sources */,
 				AFBB430D19D7736F002DA662 /* RoomViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
