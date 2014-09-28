@@ -42,6 +42,7 @@ class RoomViewController: UIViewController, JamSessionClientDelegate {
         case "1" : soundGenerator?.playNoteOn(UInt32(tone!), velocity: UInt32(100))
         case "0" : soundGenerator?.playNoteOff(UInt32(tone!))
         default  : println("message error")
+        }
     }
     
     func recivedInvitationRequest(session: MCSession, peer: MCPeerID, accept: (Void)->(Void), reject: (Void)->(Void)) {
@@ -117,4 +118,4 @@ class PeerListController: UITableViewController {
     }
     
     
-};
+}
