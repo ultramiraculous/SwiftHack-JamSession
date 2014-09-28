@@ -29,15 +29,21 @@ enum JamSessionMessage: String {
 class JamSessionClient: NSObject, MCSessionDelegate {
     var delegate: JamSessionClientDelegate?
     let session: MCSession
+    var outputStream: NSOutputStream!
     var peerID: MCPeerID {
         get { return self.session.myPeerID }
+    }
+    var peerList: [MCPeerID] {
+        var currentPeers = self.session.connectedPeers as [MCPeerID]
+        currentPeers.insert(self.peerID, atIndex: 0)
+        return currentPeers
     }
     
     init(session: MCSession){
         self.session = session
         
         super.init()
-        
+                
         session.delegate = self
     }
     

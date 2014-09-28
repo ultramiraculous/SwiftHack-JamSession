@@ -26,6 +26,7 @@ class RoomViewController: UIViewController, JamSessionClientDelegate {
         
         if let peerListController = childController as? PeerListController {
             self.peerList = peerListController
+            self.peerList?.peerList = self.roomClient.peerList
         }
     }
     
@@ -37,8 +38,10 @@ class RoomViewController: UIViewController, JamSessionClientDelegate {
         switch message {
         case JamSessionMessage.Start:
             soundGenerator?.playNoteOn(UInt32(72), velocity: UInt32(100))
+            self.peerList?.setPeerState(peer, playing: true)
         case JamSessionMessage.Stop:
             soundGenerator?.playNoteOff(UInt32(72))
+            self.peerList?.setPeerState(peer, playing: false)
         }
     }
     
@@ -71,7 +74,7 @@ class RoomViewController: UIViewController, JamSessionClientDelegate {
     @IBAction func playNoteOff(b:UIButton) {
         roomClient.sendMessage(JamSessionMessage.Stop)
     }
-
+    
 }
 
 
@@ -79,6 +82,21 @@ class PeerListController: UITableViewController {
 
     var peerList: [MCPeerID] = [] {
         didSet { self.tableView.reloadData() }
+    }
+    
+    func setPeerState(peer: MCPeerID, playing: Bool)
+    {
+        let index = find(peerList, peer);
+        
+        if let index = index {
+            if let cell: UITableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow:index, inSection: 0)) {
+                if playing == true {
+                    cell.textLabel?.text = "\(peer.displayName) 🎶"
+                } else {
+                    cell.textLabel?.text = "\(peer.displayName) "
+                }
+            }
+        }
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -98,5 +116,6 @@ class PeerListController: UITableViewController {
         
         return peerCell
     }
+    
     
 }
