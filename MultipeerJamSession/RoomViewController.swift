@@ -98,9 +98,9 @@ class PeerListController: UITableViewController {
         if let index = index {
             if let cell: UITableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow:index, inSection: 0)) {
                 if playing == true {
-                    cell.textLabel?.text = "\(peer.displayName) 🎶"
+                    cell.textLabel.text = "\(peer.displayName) 🎶"
                 } else {
-                    cell.textLabel?.text = "\(peer.displayName) "
+                    cell.textLabel.text = "\(peer.displayName) "
                 }
             }
         }
@@ -118,7 +118,7 @@ class PeerListController: UITableViewController {
         
         let peerCell = tableView.dequeueReusableCellWithIdentifier("PeerCell") as UITableViewCell
         
-        peerCell.textLabel?.text = peerList[indexPath.row].displayName
+        peerCell.textLabel.text = peerList[indexPath.row].displayName
         peerCell.detailTextLabel?.text = ""
         
         return peerCell

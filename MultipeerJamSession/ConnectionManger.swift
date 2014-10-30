@@ -62,7 +62,7 @@ class JamSessionClient: NSObject, MCSessionDelegate {
             dispatch_sync(dispatch_get_main_queue(), {
                 
                 let message = NSString(data: data, encoding: JamSessionStringEncoding)
-                delegate.recievedMessage(peerID, message:message)
+                delegate.recievedMessage(peerID, message:message!)
                 
             })
         }
